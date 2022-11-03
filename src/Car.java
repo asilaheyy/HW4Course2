@@ -7,6 +7,8 @@ public abstract class Car {
 
     public abstract void stop();
 
+    public abstract void printType();
+
     public Car(String brand, String model, float engineVolume) {
         setBrand(brand);
         setModel(model);
@@ -49,3 +51,4 @@ public abstract class Car {
         return engineVolume;
     }
 }
+
