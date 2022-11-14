@@ -21,10 +21,12 @@ public class PassengerCar extends Car implements Compeatable {
 
 
     public BodyType bodyType;
+    public boolean diagnostics;
 
-    public PassengerCar(String brand, String model, float engineVolume, BodyType bodyType) {
+    public PassengerCar(String brand, String model, float engineVolume,boolean diagnostics, BodyType bodyType) {
         super(brand, model, engineVolume);
         setBodyType(bodyType);
+       isDiagnostics(diagnostics);
     }
 
     public BodyType setBodyType(BodyType bodyType) {
@@ -51,6 +53,10 @@ public class PassengerCar extends Car implements Compeatable {
         }
     }
 
+    @Override
+    public void runDiagnostics() {
+        System.out.println("Автомобиль проходит диагностику.");
+    }
 
     @Override
     public void stop() {
@@ -75,6 +81,12 @@ public class PassengerCar extends Car implements Compeatable {
     @Override
     public String toString() {
         return "Автомобиль " + getBrand() + " " + getModel() + " " + bodyType + ". Объем двигателя " + getEngineVolume() + " л.";
+    }
+    public boolean isDiagnostics(boolean value) throws DiagnosticsException {
+        if (value == false) {
+        throw new DiagnosticsException("Требуется диагностика."+getBrand()+getModel());
+        }
+            return true;
     }
 }
 

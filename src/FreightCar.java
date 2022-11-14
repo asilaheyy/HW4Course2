@@ -19,11 +19,13 @@ public class FreightCar extends Car implements Compeatable {
     }
 
     public LiftingCapacity liftingCapacity;
+    public boolean diagnostics;
 
 
-    public FreightCar(String brand, String model, float engineVolume, LiftingCapacity liftingCapacity) {
+    public FreightCar(String brand, String model, float engineVolume, boolean diagnostics, LiftingCapacity liftingCapacity) {
         super(brand, model, engineVolume);
         setLiftingCapacity(liftingCapacity);
+        isDiagnostics(diagnostics);
     }
 
     public LiftingCapacity setLiftingCapacity(LiftingCapacity liftingCapacity) {
@@ -41,6 +43,11 @@ public class FreightCar extends Car implements Compeatable {
     @Override
     public void stop() {
         System.out.println("Грузовой автомобиль закончил движение.");
+    }
+
+    @Override
+    public void runDiagnostics() {
+        System.out.println("Грузовой автомобиль проходит диагностику.");
     }
 
     @Override
@@ -73,5 +80,12 @@ public class FreightCar extends Car implements Compeatable {
     @Override
     public String toString() {
         return "Грузовой автомобиль " + getBrand() + " " + getModel() + ". Объем двигателя " + getEngineVolume() + " л. " + liftingCapacity;
+    }
+
+    public boolean isDiagnostics(boolean value) throws DiagnosticsException {
+        if (value == false) {
+        throw new DiagnosticsException("Требуется диагностика." + getBrand() + getModel());
+        }
+            return true;
     }
 }

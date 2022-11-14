@@ -3,6 +3,9 @@ public abstract class Car {
     private String model;
     private float engineVolume;
 
+
+    public abstract void runDiagnostics();
+
     public abstract void start();
 
     public abstract void stop();
@@ -50,5 +53,6 @@ public abstract class Car {
     public float getEngineVolume() {
         return engineVolume;
     }
+
 }
 

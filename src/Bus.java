@@ -35,6 +35,11 @@ public class Bus extends Car implements Compeatable {
     }
 
     @Override
+    public void runDiagnostics() throws DiagnosticsException{
+        throw new DiagnosticsException("Автобусы не проходят диягностику.");
+    }
+
+    @Override
     public void start() {
         System.out.println("Автобус начал движение.");
     }
@@ -77,5 +82,8 @@ public class Bus extends Car implements Compeatable {
     @Override
     public String toString() {
         return "Автобус " + getBrand() + " " + getModel() + ". Объем двигателя " + getEngineVolume() + " л. " + volume;
+    }
+    public boolean isDiagnostics(boolean value) throws DiagnosticsException {
+            throw new DiagnosticsException("Автобусам не требуется диагностика.");
     }
 }

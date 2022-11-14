@@ -4,6 +4,9 @@ public class PssgCarDriver<B extends PassengerCar> {
     private String drivingLisence;
     private int experience;
 
+    private static final String INVALID_LISENCE ="Неправильный тип лицензии.";
+
+
     public PssgCarDriver(String name, String drivingLisence, int experience) {
         setName(name);
         setDrivingLisence(drivingLisence);
@@ -46,9 +49,9 @@ public class PssgCarDriver<B extends PassengerCar> {
         }
     }
 
-    public void setDrivingLisence(String drivingLisence) {
+    public void setDrivingLisence(String drivingLisence) throws DriverLicenseException {
         if (drivingLisence != "B" || drivingLisence == null || drivingLisence.isBlank()) {
-            this.drivingLisence = "Неправильный тип лицензии";
+            throw new DriverLicenseException(INVALID_LISENCE);
         } else {
             this.drivingLisence = drivingLisence;
         }
