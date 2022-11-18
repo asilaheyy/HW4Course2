@@ -4,7 +4,7 @@ public class PssgCarDriver<B extends PassengerCar> {
     private String drivingLisence;
     private int experience;
 
-    private static final String INVALID_LISENCE ="Неправильный тип лицензии.";
+    private static final String INVALID_LISENCE = "Неправильный тип лицензии.";
 
 
     public PssgCarDriver(String name, String drivingLisence, int experience) {

@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class PassengerCar extends Car implements Compeatable {
 
     public enum BodyType {
         SEDAN("Седан"), HATCHBACK("Хетчбэк"), COUPE("Купе"), UNIVERSAL("Универсал"), ROVER("Внедорожник"), CROSSOVER("Кроссовер"), PICKUP("Пикап"), VAN("Фургон"), MINIVAN("Минивэн");
 
         private String bodyType;
+
 
         BodyType(String bodyType) {
             this.bodyType = bodyType;
@@ -20,13 +24,35 @@ public class PassengerCar extends Car implements Compeatable {
     }
 
 
+    private List<PassengerCar> allCars;
+    private List<Mechanics> mechanics;
+    private List<Sponsors> sponsor;
+    private List<PssgCarDriver> carDriver;
+
     public BodyType bodyType;
     public boolean diagnostics;
 
-    public PassengerCar(String brand, String model, float engineVolume,boolean diagnostics, BodyType bodyType) {
+    public PassengerCar(String brand, String model, float engineVolume, boolean diagnostics, BodyType bodyType) {
         super(brand, model, engineVolume);
         setBodyType(bodyType);
-       isDiagnostics(diagnostics);
+        isDiagnostics(diagnostics);
+        allCars = new ArrayList<>();
+        mechanics = new ArrayList<>();
+        sponsor = new ArrayList<>();
+        carDriver = new ArrayList<>();
+
+    }
+
+    public List<PassengerCar> getAllCars() {
+        return allCars;
+    }
+
+    public List<Sponsors> getSponsor() {
+        return sponsor;
+    }
+
+    public List<PssgCarDriver> getCarDriver() {
+        return carDriver;
     }
 
     public BodyType setBodyType(BodyType bodyType) {
@@ -51,6 +77,11 @@ public class PassengerCar extends Car implements Compeatable {
         } else {
             System.out.println(bodyType);
         }
+    }
+
+    @Override
+    public void toSponse() {
+        System.out.println("Автомобиль " + getBrand() + getModel() + " спонсируется " + getSponsor());
     }
 
     @Override
@@ -82,11 +113,17 @@ public class PassengerCar extends Car implements Compeatable {
     public String toString() {
         return "Автомобиль " + getBrand() + " " + getModel() + " " + bodyType + ". Объем двигателя " + getEngineVolume() + " л.";
     }
+
     public boolean isDiagnostics(boolean value) throws DiagnosticsException {
         if (value == false) {
-        throw new DiagnosticsException("Требуется диагностика."+getBrand()+getModel());
+            throw new DiagnosticsException("Требуется диагностика." + getBrand() + getModel());
         }
-            return true;
+        return true;
     }
+
+    public List<Mechanics> getMechanics() {
+        return mechanics;
+    }
+
 }
 

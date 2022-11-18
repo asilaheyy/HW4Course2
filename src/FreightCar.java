@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class FreightCar extends Car implements Compeatable {
 
     public enum LiftingCapacity {
@@ -20,12 +23,20 @@ public class FreightCar extends Car implements Compeatable {
 
     public LiftingCapacity liftingCapacity;
     public boolean diagnostics;
+    private List<Car> allCars;
+    private List<Mechanics> mechanics;
+    private List<Sponsors> sponsor;
+    private List<FrCarDriver> carDriver;
 
 
     public FreightCar(String brand, String model, float engineVolume, boolean diagnostics, LiftingCapacity liftingCapacity) {
         super(brand, model, engineVolume);
         setLiftingCapacity(liftingCapacity);
         isDiagnostics(diagnostics);
+        allCars = new ArrayList<>();
+        mechanics = new ArrayList<>();
+        sponsor = new ArrayList<>();
+        carDriver = new ArrayList<>();
     }
 
     public LiftingCapacity setLiftingCapacity(LiftingCapacity liftingCapacity) {
@@ -33,6 +44,27 @@ public class FreightCar extends Car implements Compeatable {
             this.liftingCapacity = LiftingCapacity.N1;
         }
         return this.liftingCapacity = liftingCapacity;
+    }
+
+    public List<Car> getAllCars() {
+        return allCars;
+    }
+
+    public List<Mechanics> getMechanics() {
+        return mechanics;
+    }
+
+    public List<Sponsors> getSponsor() {
+        return sponsor;
+    }
+
+    public List<FrCarDriver> getCarDriver() {
+        return carDriver;
+    }
+
+    @Override
+    public void toSponse() {
+        System.out.println("Грузовой автомобиль " + getBrand() + getModel() + " спонсируется " + getSponsor());
     }
 
     @Override
@@ -84,8 +116,8 @@ public class FreightCar extends Car implements Compeatable {
 
     public boolean isDiagnostics(boolean value) throws DiagnosticsException {
         if (value == false) {
-        throw new DiagnosticsException("Требуется диагностика." + getBrand() + getModel());
+            throw new DiagnosticsException("Требуется диагностика." + getBrand() + getModel());
         }
-            return true;
+        return true;
     }
 }

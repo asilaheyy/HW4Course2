@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Car {
     private String brand;
     private String model;
     private float engineVolume;
-
 
     public abstract void runDiagnostics();
 
@@ -12,10 +14,13 @@ public abstract class Car {
 
     public abstract void printType();
 
+    public abstract void toSponse();
+
     public Car(String brand, String model, float engineVolume) {
         setBrand(brand);
         setModel(model);
         setEngineVolume(engineVolume);
+
     }
 
     public final void setBrand(String brand) {
@@ -55,4 +60,5 @@ public abstract class Car {
     }
 
 }
+
 

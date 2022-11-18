@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bus extends Car implements Compeatable {
 
     public enum Volume {
@@ -21,10 +24,39 @@ public class Bus extends Car implements Compeatable {
     }
 
     public Volume volume;
+    private List<Bus> allBuses;
+    private List<Mechanics> mechanic;
+    private List<Sponsors> sponsor;
+    private List<BusDriver> carDriver;
 
     public Bus(String brand, String model, float engineVolume, Volume volume) {
         super(brand, model, engineVolume);
         setVolume(volume);
+        allBuses = new ArrayList<>();
+        mechanic = new ArrayList<>();
+        sponsor = new ArrayList<>();
+        carDriver = new ArrayList<>();
+    }
+
+    public List<Bus> getAllBuses() {
+        return allBuses;
+    }
+
+    public List<Mechanics> getMechanic() {
+        return mechanic;
+    }
+
+    public List<Sponsors> getSponsor() {
+        return sponsor;
+    }
+
+    public List<BusDriver> getCarDriver() {
+        return carDriver;
+    }
+
+    @Override
+    public void toSponse() {
+        System.out.println("Автобус " + getBrand() + getModel() + " спонсируется " + getSponsor());
     }
 
     public Volume setVolume(Volume volume) {
@@ -35,7 +67,7 @@ public class Bus extends Car implements Compeatable {
     }
 
     @Override
-    public void runDiagnostics() throws DiagnosticsException{
+    public void runDiagnostics() throws DiagnosticsException {
         throw new DiagnosticsException("Автобусы не проходят диягностику.");
     }
 
@@ -83,7 +115,8 @@ public class Bus extends Car implements Compeatable {
     public String toString() {
         return "Автобус " + getBrand() + " " + getModel() + ". Объем двигателя " + getEngineVolume() + " л. " + volume;
     }
+
     public boolean isDiagnostics(boolean value) throws DiagnosticsException {
-            throw new DiagnosticsException("Автобусам не требуется диагностика.");
+        throw new DiagnosticsException("Автобусам не требуется диагностика.");
     }
 }
