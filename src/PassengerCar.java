@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class PassengerCar extends Car implements Compeatable {
 
@@ -24,10 +26,10 @@ public class PassengerCar extends Car implements Compeatable {
     }
 
 
-    private List<PassengerCar> allCars;
-    private List<Mechanics> mechanics;
-    private List<Sponsors> sponsor;
-    private List<PssgCarDriver> carDriver;
+    private Set<PassengerCar> allCars;
+    private Set<Mechanics> mechanics;
+    private Set<Sponsors> sponsor;
+    private Set<PssgCarDriver> carDriver;
 
     public BodyType bodyType;
     public boolean diagnostics;
@@ -36,22 +38,22 @@ public class PassengerCar extends Car implements Compeatable {
         super(brand, model, engineVolume);
         setBodyType(bodyType);
         isDiagnostics(diagnostics);
-        allCars = new ArrayList<>();
-        mechanics = new ArrayList<>();
-        sponsor = new ArrayList<>();
-        carDriver = new ArrayList<>();
+        allCars = new HashSet<>();
+        mechanics = new HashSet<>();
+        sponsor = new HashSet<>();
+        carDriver = new HashSet<>();
 
     }
 
-    public List<PassengerCar> getAllCars() {
+    public Set<PassengerCar> getAllCars() {
         return allCars;
     }
 
-    public List<Sponsors> getSponsor() {
+    public Set<Sponsors> getSponsor() {
         return sponsor;
     }
 
-    public List<PssgCarDriver> getCarDriver() {
+    public Set<PssgCarDriver> getCarDriver() {
         return carDriver;
     }
 
@@ -121,7 +123,7 @@ public class PassengerCar extends Car implements Compeatable {
         return true;
     }
 
-    public List<Mechanics> getMechanics() {
+    public Set<Mechanics> getMechanics() {
         return mechanics;
     }
 

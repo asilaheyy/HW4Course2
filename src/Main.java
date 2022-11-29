@@ -1,12 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<PassengerCar> allCars = new ArrayList<>();
-        List<FreightCar> allFCars = new ArrayList<>();
-        List<Bus> allBuses = new ArrayList<>();
+        Set<PassengerCar> allCars = new HashSet<>();
+        Set<FreightCar> allFCars = new HashSet<>();
+        Set<Bus> allBuses = new HashSet<>();
 
 
         Bus bus1 = new Bus("Mercedes", "AA", 10.0f, Bus.Volume.AVERAGE);
@@ -39,7 +41,7 @@ public class Main {
 
         BusDriver<Bus> a = new BusDriver<>("AA", "D", 5);
         System.out.println(a);
-        a.drive(bus1);
+        a.drive(bus2);
 
         PssgCarDriver<PassengerCar> b = new PssgCarDriver<>("BB", "B", 7);
         System.out.println(b);
@@ -50,57 +52,70 @@ public class Main {
         c.drive(fcar4);
 
         car2.getCarDriver().add(b);
+        car2.getCarDriver().add(b);
         System.out.println(car2.getCarDriver());
 
-
-        car1.printType();
-        fcar3.printType();
-        bus1.printType();
-        car1.runDiagnostics();
-
-        allCars.add(car1);
-        allCars.add(car2);
-        allCars.add(car3);
-        allCars.add(car4);
-
-        System.out.println(allCars);
-
-        allFCars.add(fcar1);
-        allFCars.add(fcar2);
-        allFCars.add(fcar3);
-        allFCars.add(fcar4);
-        System.out.println(allFCars);
-
-        allBuses.add(bus1);
-        allBuses.add(bus2);
-        allBuses.add(bus3);
-        allBuses.add(bus4);
-        System.out.println(allBuses);
+        bus2.getCarDriver().add(a);
+        bus2.getCarDriver().add(a);
+        System.out.println(bus2.getCarDriver());
 
 
-        Sponsors sponsor1 = new Sponsors("K.L", 3000);
-        Sponsors sponsor2 = new Sponsors("O.L", 5000);
-        Sponsors sponsor3 = new Sponsors("A.N", 1000);
+//        car1.printType();
+//        fcar3.printType();
+//        bus1.printType();
+//        car1.runDiagnostics();
+//
+//        allCars.add(car1);
+//        allCars.add(car2);
+//        allCars.add(car3);
+//        allCars.add(car4);
+//        allCars.add(car4);
+//
+//        System.out.println(allCars);
 
-        bus1.getSponsor().add(sponsor1);
-        bus1.getSponsor().add(sponsor2);
-        System.out.println(bus1.getSponsor().size());
-        System.out.println(bus1.getSponsor());
+//        allFCars.add(fcar1);
+//        allFCars.add(fcar2);
+//        allFCars.add(fcar3);
+//        allFCars.add(fcar4);
+//        allFCars.add(fcar4);
+//        System.out.println(allFCars);
 
-        Mechanics mechanic1 = new Mechanics("Василий А","АОА", "Легковые автомобили, Автобусы");
+//        allBuses.add(bus1);
+//        allBuses.add(bus2);
+//        allBuses.add(bus3);
+//        allBuses.add(bus4);
+//        allBuses.add(bus4);
+//        System.out.println(allBuses);
+
+
+//        Sponsors sponsor1 = new Sponsors("K.L", 3000);
+//        Sponsors sponsor2 = new Sponsors("O.L", 5000);
+//        Sponsors sponsor3 = new Sponsors("A.N", 1000);
+//
+//        bus1.getSponsor().add(sponsor1);
+//        bus1.getSponsor().add(sponsor2);
+//        bus1.getSponsor().add(sponsor2);
+//        System.out.println(bus1.getSponsor().size());
+//        System.out.println(bus1.getSponsor());
+//
+        Mechanics mechanic1 = new Mechanics("Василий А", "АОА", "Легковые автомобили, Автобусы");
         Mechanics mechanic2 = new Mechanics("Алексей К", "ППР", "Грузовые автомобили");
 
         mechanic1.doDiagnostics(bus2);
         car2.getMechanics().add(mechanic1);
+        car2.getMechanics().add(mechanic1);
         System.out.println(car2.getMechanics());
         fcar4.getMechanics().add(mechanic2);
-        System.out.println(fcar4.getMechanics());
+        fcar4.getMechanics().add(mechanic2);
+       System.out.println(fcar4.getMechanics());
+       bus3.getMechanic().add(mechanic1);
+       bus3.getMechanic().add(mechanic1);
+        System.out.println(bus3.getMechanic());
 
-        MechanicStation<Car> station = new MechanicStation<Car>();
-        station.addCar(car3);
-        station.addCar(fcar4);
-        station.addCar(bus2);
-        station.runMechanics();
+//        Set<Car> station = new HashSet<>();
+//        station.add(car1);
+//        station.add(car2);
+
 
 
     }

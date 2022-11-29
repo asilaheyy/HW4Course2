@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Bus extends Car implements Compeatable {
 
@@ -24,33 +26,33 @@ public class Bus extends Car implements Compeatable {
     }
 
     public Volume volume;
-    private List<Bus> allBuses;
-    private List<Mechanics> mechanic;
-    private List<Sponsors> sponsor;
-    private List<BusDriver> carDriver;
+    private Set<Bus> allBuses;
+    private Set<Mechanics> mechanic;
+    private Set<Sponsors> sponsor;
+    private Set<BusDriver> carDriver;
 
     public Bus(String brand, String model, float engineVolume, Volume volume) {
         super(brand, model, engineVolume);
         setVolume(volume);
-        allBuses = new ArrayList<>();
-        mechanic = new ArrayList<>();
-        sponsor = new ArrayList<>();
-        carDriver = new ArrayList<>();
+        allBuses = new HashSet<>();
+        mechanic = new HashSet<>();
+        sponsor = new HashSet<>();
+        carDriver = new HashSet<>();
     }
 
-    public List<Bus> getAllBuses() {
+    public Set<Bus> getAllBuses() {
         return allBuses;
     }
 
-    public List<Mechanics> getMechanic() {
+    public Set<Mechanics> getMechanic() {
         return mechanic;
     }
 
-    public List<Sponsors> getSponsor() {
+    public Set<Sponsors> getSponsor() {
         return sponsor;
     }
 
-    public List<BusDriver> getCarDriver() {
+    public Set<BusDriver> getCarDriver() {
         return carDriver;
     }
 

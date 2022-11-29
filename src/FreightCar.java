@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FreightCar extends Car implements Compeatable {
 
@@ -23,20 +25,20 @@ public class FreightCar extends Car implements Compeatable {
 
     public LiftingCapacity liftingCapacity;
     public boolean diagnostics;
-    private List<Car> allCars;
-    private List<Mechanics> mechanics;
-    private List<Sponsors> sponsor;
-    private List<FrCarDriver> carDriver;
+    private Set<Car> allCars;
+    private Set<Mechanics> mechanics;
+    private Set<Sponsors> sponsor;
+    private Set<FrCarDriver> carDriver;
 
 
     public FreightCar(String brand, String model, float engineVolume, boolean diagnostics, LiftingCapacity liftingCapacity) {
         super(brand, model, engineVolume);
         setLiftingCapacity(liftingCapacity);
         isDiagnostics(diagnostics);
-        allCars = new ArrayList<>();
-        mechanics = new ArrayList<>();
-        sponsor = new ArrayList<>();
-        carDriver = new ArrayList<>();
+        allCars = new HashSet<>();
+        mechanics = new HashSet<>();
+        sponsor = new HashSet<>();
+        carDriver = new HashSet<>();
     }
 
     public LiftingCapacity setLiftingCapacity(LiftingCapacity liftingCapacity) {
@@ -46,19 +48,19 @@ public class FreightCar extends Car implements Compeatable {
         return this.liftingCapacity = liftingCapacity;
     }
 
-    public List<Car> getAllCars() {
+    public Set<Car> getAllCars() {
         return allCars;
     }
 
-    public List<Mechanics> getMechanics() {
+    public Set<Mechanics> getMechanics() {
         return mechanics;
     }
 
-    public List<Sponsors> getSponsor() {
+    public Set<Sponsors> getSponsor() {
         return sponsor;
     }
 
-    public List<FrCarDriver> getCarDriver() {
+    public Set<FrCarDriver> getCarDriver() {
         return carDriver;
     }
 

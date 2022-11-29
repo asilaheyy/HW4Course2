@@ -1,22 +1,20 @@
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class MechanicStation<T extends Car> {
 
-    private Queue<T> queue = new ArrayDeque<>();
+    private Set<Car> queue = new HashSet<>();
 
     public void addCar(T car){
-        queue.offer(car);
+        queue.add(car);
     }
 
-    public void runMechanics() {
-        T car = queue.poll();
+    public void runMechanics( T car) {
+        queue.add(car);
         if (car == null || (car instanceof Bus) ) {
             System.out.println("Очередь пуста.");
         }else {
             System.out.println(car + " на станции техобслуживания.");
-            runMechanics();
+            runMechanics(car);
         }
     }
 
